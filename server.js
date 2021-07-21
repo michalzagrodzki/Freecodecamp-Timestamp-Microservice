@@ -20,7 +20,7 @@ app.get("/", function (req, res) {
 
 // date endpoint
 app.get("/api/:date?", function (req, res) {
-  res.json({ greeting: req.query.date });
+  res.json({ greeting: req.params.date });
 });
 
 // listen for requests :)
