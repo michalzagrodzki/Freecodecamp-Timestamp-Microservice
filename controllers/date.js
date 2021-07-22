@@ -7,12 +7,12 @@ exports.details = (req, res) => {
         return new Date(parseInt(date));
       }
     };
-    const setDefaultDate = (date) => {
-      return new Date(date);
+    const setDefaultDate = () => {
+      return new Date();
     };
     const setDate = req.params.date
       ? setDateType(req.params.date)
-      : setDefaultDate(req.params.date);
+      : setDefaultDate();
     const validatedDate = setDate.toString();
     if (validatedDate === "Invalid Date") throw validatedDate;
 
