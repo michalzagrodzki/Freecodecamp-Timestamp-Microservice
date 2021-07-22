@@ -22,7 +22,13 @@ app.get("/", function (req, res) {
 
 // date endpoint
 app.get("/api/:date?", function (req, res) {
-  res.json({ greeting: req.params.date });
+  try {
+    const validatedDate = new Date(req.params.date).toString();
+    if (validatedDate === "Invalid Date") throw validatedDate;
+    res.json({ date: new Date(req.params.date) });
+  } catch (error) {
+    res.json({ error: error });
+  }
 });
 
 // listen for requests :)
