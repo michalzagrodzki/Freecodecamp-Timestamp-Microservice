@@ -16,10 +16,9 @@ exports.details = (req, res) => {
     const validatedDate = setDate.toString();
     if (validatedDate === "Invalid Date") throw validatedDate;
 
-    const stringDate = setDate.toString();
-    const formattedDate = stringDate.split("+")[0];
-
+    const formattedDate = setDate.toGMTString();
     const unixDate = setDate.getTime();
+
     const response = {
       unix: unixDate,
       utc: formattedDate,
