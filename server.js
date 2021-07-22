@@ -7,6 +7,8 @@ const app = express();
 
 const DEFAULT_PORT = 3377;
 
+const date_controller = require("./controllers/date");
+
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
 // so that your API is remotely testable by FCC
 const cors = require("cors");
@@ -21,15 +23,7 @@ app.get("/", function (req, res) {
 });
 
 // date endpoint
-app.get("/api/:date?", function (req, res) {
-  try {
-    const validatedDate = new Date(req.params.date).toString();
-    if (validatedDate === "Invalid Date") throw validatedDate;
-    res.json({ date: new Date(req.params.date) });
-  } catch (error) {
-    res.json({ error: error });
-  }
-});
+app.get("/api/:date?", date_controller.details);
 
 // listen for requests :)
 const listener = app.listen(DEFAULT_PORT || process.env.PORT, function () {
