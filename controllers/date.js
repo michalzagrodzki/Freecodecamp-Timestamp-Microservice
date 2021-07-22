@@ -1,23 +1,31 @@
+// helper methods
+const determineDateType = (date) => {
+  const setDateType = (date) => {
+    if (date.search("-") !== -1) return new Date(date);
+    if (new Date(parseInt(date)) !== "Invalid Date") {
+      return new Date(parseInt(date));
+    }
+  };
+  const setDefaultDate = () => {
+    return new Date();
+  };
+
+  return date ? setDateType(date) : setDefaultDate();
+};
+
+validateDate = (date) => {
+  const stringDate = date.toString();
+  if (stringDate === "Invalid Date") throw stringDate;
+};
+
 // display date details
 exports.details = (req, res) => {
   try {
-    const setDateType = (date) => {
-      if (date.search("-") !== -1) return new Date(date);
-      if (new Date(parseInt(date)) !== "Invalid Date") {
-        return new Date(parseInt(date));
-      }
-    };
-    const setDefaultDate = () => {
-      return new Date();
-    };
-    const setDate = req.params.date
-      ? setDateType(req.params.date)
-      : setDefaultDate();
-    const validatedDate = setDate.toString();
-    if (validatedDate === "Invalid Date") throw validatedDate;
+    const date = determineDateType(req.params.date);
+    validateDate(date);
 
-    const formattedDate = setDate.toGMTString();
-    const unixDate = setDate.getTime();
+    const formattedDate = date.toGMTString();
+    const unixDate = date.getTime();
 
     const response = {
       unix: unixDate,
