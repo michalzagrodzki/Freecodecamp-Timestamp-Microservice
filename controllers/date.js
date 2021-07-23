@@ -21,7 +21,7 @@ const determineDateType = (date) => {
       const dayYear = splitDate
         .filter((item) => Number.isInteger(parseInt(item)))
         .map((item) => parseInt(item));
-      const day = dayYear.filter((item) => item <= 12)[0] + 1;
+      const day = dayYear.filter((item) => item <= 12)[0];
       const month = splitDate.filter(
         (item) => !Number.isInteger(parseInt(item))
       )[0];
