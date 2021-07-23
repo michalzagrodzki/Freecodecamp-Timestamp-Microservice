@@ -41,7 +41,6 @@ const determineDateType = (date) => {
 
   return date ? setDateType(date) : setDefaultDate();
 };
-
 validateDate = (date) => {
   const stringDate = date.toString();
   if (stringDate === "Invalid Date") throw stringDate;
