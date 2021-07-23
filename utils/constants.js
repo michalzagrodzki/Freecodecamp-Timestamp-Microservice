@@ -13,4 +13,7 @@ const MONTH_NAMES = [
   "December",
 ];
 
+const DEFAULT_PORT = 3377;
+
 exports.MONTH_NAMES = MONTH_NAMES;
+exports.DEFAULT_PORT = DEFAULT_PORT;

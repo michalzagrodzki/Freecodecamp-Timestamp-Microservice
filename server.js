@@ -5,8 +5,7 @@
 const express = require("express");
 const app = express();
 
-const DEFAULT_PORT = 3377;
-
+const { DEFAULT_PORT } = require("./utils/constants");
 const date_controller = require("./controllers/date");
 
 // enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)

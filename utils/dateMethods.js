@@ -12,8 +12,8 @@ isIntegerDate = (date) => {
 };
 
 // date setters
-const setDateFromDash = (date) => new Date(date);
-const setDateFromLocale = (date) => {
+setDateFromDash = (date) => new Date(date);
+setDateFromLocale = (date) => {
   const splitDate = decodeURI(date).split(" ");
   const dayYear = splitDate
     .filter((item) => Number.isInteger(parseInt(item)))
@@ -26,16 +26,16 @@ const setDateFromLocale = (date) => {
   const year = dayYear.filter((item) => item >= 12)[0];
   return new Date(year, monthIndex, day);
 };
-const setDateFromInteger = (date) => new Date(parseInt(date));
+setDateFromInteger = (date) => new Date(parseInt(date));
 
 // date public methods
-const determineDateType = (date) => {
-  const setDateType = (date) => {
+determineDateType = (date) => {
+  setDateType = (date) => {
     if (isDashDate(date)) return setDateFromDash(date);
     if (isLocaleDate(date)) return setDateFromLocale(date);
     if (isIntegerDate(date)) return setDateFromInteger(date);
   };
-  const setDefaultDate = () => {
+  setDefaultDate = () => {
     return new Date();
   };
 
